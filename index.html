@@ -493,7 +493,7 @@ footer {
 <span>THE SURVIVAL UNIVERSITY</span>
     </div>
     <nav>
-      <div class="hamburger" id="hamburger">☰</div>
+      <div id="hamburger">☰</div>
       <ul id="nav-links">
         <li id="closeMenu" style="text-align:right;">
           <button style="font-size:24px; background:none; border:none; color:white;">✕</button>
@@ -860,14 +860,13 @@ footer {
 <button id="scrollToggle">↓</button>
 
   <script>
+<script>
+// Hamburger Menu
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('nav-links');
 
-hamburger.addEventListener('click', () => navLinks.classList.toggle('show'));
-
-document.getElementById('closeMenu').addEventListener('click', () => {
-  navLinks.classList.remove('show');
-  window.location.href = 'index.html';
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('show');
 });
 
 document.querySelectorAll('#nav-links a, #nav-links button').forEach(item => {
@@ -907,26 +906,22 @@ unsubscribeBtn.addEventListener('click', () => {
 
 // Scroll Down/Up Button
 let scrollDown = true; // start with scroll down
-
 document.getElementById('scrollToggle').addEventListener('click', function() {
   if (scrollDown) {
     window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-    this.textContent = '↑'; // change icon to up
+    this.textContent = '↑'; 
   } else {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    this.textContent = '↓'; // change icon to down
+    this.textContent = '↓'; 
   }
-  scrollDown = !scrollDown; // toggle direction
+  scrollDown = !scrollDown; 
 });
 
-document.getElementById("faculties").addEventListener("click", function() {
-    document.getElementById("message").style.display = "block";
-  });
-
+// Faculty Dropdown
 function toggleDropdown() {
   let menu = document.getElementById("facultyDropdown");
   menu.style.display = (menu.style.display === "block") ? "none" : "block";
-
+}
 </script>
 
 </body>

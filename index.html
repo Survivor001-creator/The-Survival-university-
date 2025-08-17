@@ -870,7 +870,7 @@ document.getElementById('closeMenu').addEventListener('click', () => {
 });
 
 // Close nav when clicking a link (on small screens)
-document.querySelectorAll('#nav-links a, #nav-links button').forEach(item => {
+document.querySelectorAll('#nav-links a, #nav-links button:not(.dropdown-btn)').forEach(item => {
   item.addEventListener('click', () => {
     if (window.innerWidth <= 768) navLinks.classList.remove('show');
   });

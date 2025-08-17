@@ -859,7 +859,7 @@ l
 
 <button id="scrollToggle">↓</button>
 
-  <script>
+<script>
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('nav-links');
 
@@ -867,9 +867,9 @@ hamburger.addEventListener('click', () => navLinks.classList.toggle('show'));
 
 document.getElementById('closeMenu').addEventListener('click', () => {
   navLinks.classList.remove('show');
-  window.location.href = 'index.html';
 });
 
+// Close nav when clicking a link (on small screens)
 document.querySelectorAll('#nav-links a, #nav-links button').forEach(item => {
   item.addEventListener('click', () => {
     if (window.innerWidth <= 768) navLinks.classList.remove('show');
@@ -906,27 +906,29 @@ unsubscribeBtn.addEventListener('click', () => {
 });
 
 // Scroll Down/Up Button
-let scrollDown = true; // start with scroll down
+let scrollDown = true;
 
 document.getElementById('scrollToggle').addEventListener('click', function() {
   if (scrollDown) {
     window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-    this.textContent = '↑'; // change icon to up
+    this.textContent = '↑';
   } else {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    this.textContent = '↓'; // change icon to down
+    this.textContent = '↓';
   }
-  scrollDown = !scrollDown; // toggle direction
+  scrollDown = !scrollDown;
 });
 
+// Show message on faculties click
 document.getElementById("faculties").addEventListener("click", function() {
-    document.getElementById("message").style.display = "block";
-  });
+  document.getElementById("message").style.display = "block";
+});
 
+// Dropdown toggle
 function toggleDropdown() {
   let menu = document.getElementById("facultyDropdown");
   menu.style.display = (menu.style.display === "block") ? "none" : "block";
-
+}
 </script>
 
 </body>

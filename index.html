@@ -273,66 +273,44 @@ nav {
   display: block;
 }
 
-/* FOOTER */
-footer {
+    
+.footer {
   background-color: var(--color-dark);
   color: var(--color-white);
-  padding: 30px 20px;
+  padding: 50px 20px;
 }
 
 .footer-container {
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-between;
-  align-items: flex-start;
-  gap: 30px;
-  padding: 40px;
-  box-sizing: border-box;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  width: 100%;
+  max-width: 1200px;
+  margin: auto;
 }
 
 .footer-box {
-  flex: 0 0 auto;
-  width: 250px;
-  padding-right: 20px;
-  border-right: 1px solid #ccc;
+  flex: 1 1 200px;
+  margin: 20px;
 }
 
-.footer-box.no-border {
-  border-right: none;
+.footer-box h4 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  border-bottom: 2px solid var(--color-green);
+  display: inline-block;
+  padding-bottom: 5px;
 }
 
-.footer-container a {
-  color: #ecf0f1;
+.footer-box p,
+.footer-box a {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-light);
   text-decoration: none;
 }
 
-.footer-container ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-container ul li {
-  margin-bottom: 10px;
-}
-
-.newsletter input {
-  width: 80%;
-  padding: 8px;
-  margin-top: 10px;
-  box-sizing: border-box;
-}
-
-.newsletter button {
-  margin-top: 5px;
-  padding: 8px;
-  background-color: var(--color-green);
-  color: var(--color-white);
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+.footer-box a:hover {
+  color: var(--color-green);
 }
 
 .social-icons {
@@ -342,19 +320,54 @@ footer {
 }
 
 .social-icons a {
-  font-size: 24px;
   color: var(--color-white);
-  background-color: var(--color-dark);
-  padding: 10px;
-  border-radius: 50%;
-  text-align: center;
-  transition: background 0.3s;
+  font-size: 18px;
+  transition: 0.3s;
 }
 
 .social-icons a:hover {
-  background-color: #3498db;
+  color: var(--color-green);
 }
 
+/* --- Newsletter --- */
+.newsletter form {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.newsletter input {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+}
+
+.newsletter button {
+  padding: 8px 12px;
+  background-color: var(--color-green);
+  color: var(--color-white);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.3s;
+}
+
+.newsletter button:hover {
+  background-color: #218838; /* darker green on hover */
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 15px;
+  margin-top: 20px;
+  border-top: 1px solid #444;
+  font-size: 14px;
+  color: var(--color-light);
+}
+  
+    
 /* MEDIA QUERIES */
 @media (max-width: 768px) {
   .hamburger {

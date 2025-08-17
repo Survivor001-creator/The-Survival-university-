@@ -460,7 +460,27 @@ l
   font-size: 1.8rem;
   font-weight: bold;
 }
-  
+
+    .dropdown-content {
+  display: none;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background: #f1f1f1;
+  border-radius: 5px;
+}
+
+/* Style items inside */
+.dropdown-content li a {
+  display: block;
+  padding: 8px 12px;
+  text-decoration: none;
+  color: black;
+}
+
+.dropdown-content li a:hover {
+  background: #ddd;
+}
   
   </style>
 </head>
@@ -485,14 +505,15 @@ l
         <li><a href="contact.html">Contact</a></li>
         
         
-         <!-- FACULTY Dropdown -->
-    <li class="dropdown">
-      <button class="dropdown-btn">FACULTY ▾</button>
-      <ul class="dropdown-content">
-        <li><a href="arts.html">Arts</a></li>
-        <li><a href="science.html">Science</a></li>
-      </ul>
-    </li>
+<!-- FACULTY Dropdown -->
+<li class="dropdown">
+  <button class="dropdown-btn" onclick="toggleDropdown()">FACULTY ▾</button>
+  <ul class="dropdown-content" id="facultyDropdown">
+    <li><a href="arts.html">Arts</a></li>
+    <li><a href="science.html">Science</a></li>
+  </ul>
+</li>
+
     
  </ul>
                  
@@ -902,8 +923,9 @@ document.getElementById("faculties").addEventListener("click", function() {
     document.getElementById("message").style.display = "block";
   });
 
-
-
+function toggleDropdown() {
+  let menu = document.getElementById("facultyDropdown");
+  menu.style.display = (menu.style.display === "block") ? "none" : "block";
 
 </script>
 

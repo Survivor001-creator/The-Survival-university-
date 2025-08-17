@@ -272,8 +272,8 @@ nav {
   margin-bottom: 10px;
   display: block;
 }
-
-    
+  
+/* --- Footer --- */
 .footer {
   background-color: var(--color-dark);
   color: var(--color-white);
@@ -335,15 +335,14 @@ nav {
   gap: 8px;
   margin-top: 10px;
 }
-    
+
 .newsletter input {
   flex: 1;
   padding: 8px;
   border: none;
   border-radius: 5px;
-  background-color: #333;   /* dark input background */
-  color: var(--color-white); /* white text */
 }
+
 .newsletter button {
   padding: 8px 12px;
   background-color: var(--color-green);
@@ -356,12 +355,9 @@ nav {
 }
 
 .newsletter button:hover {
-  background-color: #218838; /* darker green on hover */
+  background-color: #218838;
 }
 
-    .newsletter input::placeholder {
-  color: #bbb; /* softer placeholder text */
-    }
 .footer-bottom {
   text-align: center;
   padding: 15px;
@@ -370,7 +366,6 @@ nav {
   font-size: 14px;
   color: var(--color-light);
 }
-  
     
 /* MEDIA QUERIES */
 @media (max-width: 768px) {
@@ -752,39 +747,46 @@ nav {
         <img src="logo.jpg" alt="Logo" style="width:150px; height:auto;">
         <p>Survival International University is committed to academic excellence, innovation, and global impact.</p>
         <div class="social-icons">
-          <a href="https://wa.me/2349034950525" target="_blank"><i class="fab fa-whatsapp"></i></a>
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-        </div>
-      </div>
-      
+
+      <!-- Quick Links -->
       <div class="footer-box">
         <h4>Quick Links</h4>
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
+        <p><a href="index.html">Home</a></p>
+        <p><a href="about.html">About Us</a></p>
+        <p><a href="contact.html">Contact</a></p>
+         <p><a href="Student portal.html">Portal</a></p>
       </div>
+
       
-      <div class="footer-box">
-        <h4>Useful Links</h4>
-        <ul>
-          <li><a href="#">Help Center</a></li>
-          <li><a href="#">Ask Questions</a></li>
-          <li><a href="#">Feedback</a></li>
-          <li><a href="#">Terms of Use</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-        </ul>
-        
-      <div class="footer-box no-border">
+      <!-- Newsletter -->
+      <div class="footer-box newsletter">
         <h4>Newsletter</h4>
         <p>Subscribe for latest updates</p>
-        <input type="email" placeholder="Enter your email">
-        <button id="subscribeBtn"class="btn-green">Subscribe</button>
-        <button id="unsubscribeBtn" style="display:none;" class="btn-green">Unsubscribe</button>
+        <form>
+          <input type="email" placeholder="Enter your email" required>
+          <button id="subscribeBtn">Subscribe</button>
+          <button id="unsubscribeBtn" style="display:none;">Unsubscribe</button>
+        </form>
       </div>
+
+      <!-- Contact + Socials -->
+      <div class="footer-box">
+        <h4>Contact Us</h4>
+        <p>Email: info@survivaluniversity.com</p>
+        <p>Phone: +2349034950525</p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <p>&copy; 2025 The Survival University. All rights reserved.</p>
     </div>
   </footer>
 
@@ -906,22 +908,21 @@ closeModal.addEventListener('click', () => {
   enrollModal.style.display = 'none';
 });
 
-// Newsletter
-const subscribeBtn = document.getElementById('subscribeBtn');
-const unsubscribeBtn = document.getElementById('unsubscribeBtn');
+const subscribeBtn = document.getElementById("subscribeBtn");
+    const unsubscribeBtn = document.getElementById("unsubscribeBtn");
 
-subscribeBtn.addEventListener('click', () => {
-  alert('Thanks for subscribing!');
-  subscribeBtn.style.display = 'none';
-  unsubscribeBtn.style.display = 'inline-block';
-});
+    subscribeBtn.addEventListener("click", function(e){
+      e.preventDefault();
+      subscribeBtn.style.display = "none";
+      unsubscribeBtn.style.display = "inline-block";
+    });
 
-unsubscribeBtn.addEventListener('click', () => {
-  alert('You have unsubscribed.');
-  unsubscribeBtn.style.display = 'none';
-  subscribeBtn.style.display = 'inline-block';
-});
-
+    unsubscribeBtn.addEventListener("click", function(e){
+      e.preventDefault();
+      unsubscribeBtn.style.display = "none";
+      subscribeBtn.style.display = "inline-block";
+    });
+  
 // Scroll Down/Up Button
 let scrollDown = true;
 

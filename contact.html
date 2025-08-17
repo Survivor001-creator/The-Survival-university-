@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact -The Survival University</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background-color: gold;
+      color: #333;
+    }
+
+    h3 {
+      text-align: center;
+      font-size: 1.8rem;
+      margin: 20px 0;
+      font-weight: bold;
+      color: #2b2b2b;
+    }
+
+    /* Contact Cards */
+    .contact-section {
+      padding: 20px;
+    }
+    .contact-cards {
+      display: flex;
+      gap: 15px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      scrollbar-width: thin;
+    }
+    .contact-card {
+      flex: 0 0 auto;
+      background: white;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      min-width: 10px;
+      text-align: center;
+      transition: transform 0.2s;
+    }
+    .contact-card:hover {
+      transform: scale(1.05);
+    }
+    .contact-card img {
+      max-width: 100px;
+      margin-bottom:100px;
+    }
+
+    /* Contact Form */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 500px;
+      margin: 0 auto 30px;
+    }
+    .contact-form input, 
+    .contact-form textarea, 
+    .contact-form button {
+      padding: 10px;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .contact-form textarea {
+      resize: none;
+      min-height: 100px;
+    }
+    .contact-form button {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .contact-form button:hover {
+      background: #45a049;
+    }
+
+    /* FAQ */
+    .faq-section {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .faq-item {
+      background: #fff;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+    .faq-question {
+      padding: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-question:hover {
+      background: #f0f0f0;
+    }
+    .faq-answer {
+      padding: 15px;
+      border-top: 1px solid #eee;
+      display: none;
+    }
+    .faq-answer.show {
+      display: block;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+/* Button styling */
+  #scrollToggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: green;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: background 0.3s;
+  }
+
+  #scrollToggle:hover {
+    background: green;
+  }
+
+  </style>
+</head>
+<body>
+
+<main>
+  <section class="contact-section">
+    <h3>Get in Touch</h3>
+    <div class="contact-cards horizontal-scroll">
+      <div class="contact-card">
+        <img src="clock.jpg" alt="Clock">
+        <p><strong>Opening Hours:</strong><br>07:00am - 06:00pm</p>
+      </div>
+      <div class="contact-card">
+        <img src="phone.jpg" alt="Phone">
+        <p><strong>Phone:</strong><br>+234 9034950525</p>
+      </div>
+      <div class="contact-card">
+        <img src="email.jpg" alt="Email">
+        <p><strong>Email:</strong><br>chrizydesmond@gmail.com</p>
+      </div>
+      <div class="contact-card">
+        <img src="address.jpg" alt="Address">
+        <p><strong>Address:</strong><br>The Survival International University</p>
+      </div>
+    </div>
+
+    <h3>Send Us a Message</h3>
+    <form class="contact-form" id="contactForm">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <input type="tel" name="phone" placeholder="Your Phone" required>
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+
+    <h3>Frequently Asked Questions</h3>
+    <div class="faq-section">
+      <div class="faq-item">
+        <div class="faq-question">How to contact for help? <span class="arrow">+</span></div>
+        <div class="faq-answer">You can reach us via email, phone, or the message form above.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">What is the best career in 2025? <span class="arrow">+</span></div>
+        <div class="faq-answer">AI, Software Engineering, Data Science, and Renewable Energy fields lead the charts.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">How much fees for software engineering? <span class="arrow">+</span></div>
+        <div class="faq-answer">Our Software Engineering program starts at ₦350,000/year depending on course selection.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Can I choose my own tutor? <span class="arrow">+</span></div>
+        <div class="faq-answer">Yes, we provide tutor selection options based on expertise and availability.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Why payment are available? <span class="arrow">+</span></div>
+        <div class="faq-answer">We offer multiple payment options including installments, online transfer, and bank deposit.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Can I have free trial for a month? <span class="arrow">+</span></div>
+        <div class="faq-answer">Yes, we offer a 30-day free trial on select online courses.</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<button id="scrollToggle">↓</button>
+
+
+<hr>
+
+<script>
+  // FAQ Toggle
+  document.querySelectorAll('.faq-question').forEach(q => {
+    q.addEventListener('click', () => {
+      const answer = q.nextElementSibling;
+      answer.classList.toggle('show');
+      const arrow = q.querySelector('.arrow');
+      arrow.textContent = answer.classList.contains('show') ? '-' : '+';
+    });
+  });
+
+  // Contact Form Submit
+  document.getElementById('contactForm').addEventListener('submit', e => {
+    e.preventDefault();
+    alert('Your message has been sent successfully!');
+    e.target.reset();
+  });
+  
+  <!--scrolldown-->
+  let scrollDown = true; // start with scroll down
+
+  document.getElementById('scrollToggle').addEventListener('click', function() {
+    if (scrollDown) {
+      window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: 'smooth'
+      });
+      this.textContent = '↑'; // change icon to up
+    } else {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+      this.textContent = '↓'; // change icon to down
+    }
+    scrollDown = !scrollDown; // toggle direction
+  });
+
+</script>
+ <a class="back" href="index.html">Back to Home</a>
+<hr>
+<footer class="site-footer">
+  <p>© 2025 The Survival University. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

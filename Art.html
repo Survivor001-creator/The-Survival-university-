@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Faculty of Arts & Humanities — Courses & Leadership</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --bg:#0b1020;
+      --card:#121833;
+      --muted:#a6b0d1;
+      --text:#e8ecff;
+      --accent:#5ce1e6;
+      --accent-2:#9b8cff;
+      --ring:rgba(92,225,230,0.35);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:linear-gradient(180deg,#070b18 0%, #0b1020 100%);color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif}
+    a{color:var(--accent);text-decoration:none}
+    header{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:saturate(140%) blur(10px);
+      background:rgba(7,11,24,0.7);
+      border-bottom:1px solid rgba(156,163,175,0.15);
+    }
+    .container{max-width:1200px;margin:0 auto;padding:20px}
+    .topbar{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .badge{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#081223;padding:6px 10px;border-radius:999px;font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+    h1{margin:8px 0 0;font-size:28px;line-height:1.2}
+    .sub{color:var(--muted);margin-top:6px;font-size:14px}
+    .leadership{
+      margin:18px 0 10px;display:grid;gap:16px;grid-template-columns:1fr;align-items:start
+    }
+    @media(min-width:900px){.leadership{grid-template-columns:280px 1fr}}
+    .panel{
+      background:linear-gradient(180deg,rgba(18,24,51,0.85),rgba(12,18,40,0.85));
+      border:1px solid rgba(156,163,175,0.14);
+      border-radius:14px;padding:14px 14px;
+      box-shadow:0 8px 30px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.02)
+    }
+    .row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    .avatar{width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,0.08)}
+    .role{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.03);padding:8px 10px;border-radius:12px;border:1px solid rgba(255,255,255,0.06)}
+    .role small{display:block;color:var(--muted);font-size:11px;line-height:1}
+    .role strong{display:block;font-size:13px}
+    .crumb{color:var(--muted);font-size:12px;margin:8px 0 0}
+    .filters{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+    .chip{padding:7px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.08);cursor:pointer;color:var(--muted);background:rgba(255,255,255,0.02);transition:all .2s}
+    .chip.active{color:#081223;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-color:transparent;font-weight:700}
+    .grid{display:grid;gap:14px;margin:14px 0 60px;grid-template-columns:1fr}
+    @media(min-width:640px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media(min-width:1024px){.grid{grid-template-columns:repeat(3,1fr)}}
+    .card{
+      background:linear-gradient(180deg,rgba(18,24,51,0.9),rgba(12,18,40,0.9));
+      border:1px solid rgba(156,163,175,0.14);
+      border-radius:16px;overflow:hidden;position:relative
+    }
+    .card .top{padding:14px 14px 6px;border-bottom:1px dashed rgba(156,163,175,0.18)}
+    .dept{font-size:12px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+    .title{font-size:16px;font-weight:700;margin-top:4px}
+    .chain{display:flex;gap:10px;padding:12px;align-items:center;flex-wrap:wrap}
+    .chip-role{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.03);padding:8px 10px;border-radius:12px;border:1px solid rgba(255,255,255,0.06)}
+    .chip-role img{width:32px;height:32px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,0.06)}
+    .chip-role .meta{display:flex;flex-direction:column}
+    .chip-role .meta em{font-style:normal;color:var(--muted);font-size:10px;line-height:1}
+    .chip-role .meta b{font-weight:700;font-size:12px}
+    .sep{width:14px;height:2px;background:rgba(255,255,255,0.15);border-radius:2px}
+    .tagline{padding:0 14px 14px;color:var(--muted);font-size:12px}
+    .footer{
+      border-top:1px solid rgba(156,163,175,0.12);padding:14px 0;color:var(--muted);font-size:13px
+    }
+    .ring{box-shadow:0 0 0 6px var(--ring)}
+    .back{margin-left:auto;font-size:13px}
+    
+      /* Button styling */
+  #scrollToggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #0078ff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: background 0.3s;
+  }
+
+  #scrollToggle:hover {
+    background: #005bb5;
+  
+    
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container topbar">
+      <span class="badge">Faculty of Arts & Humanities</span>
+      <h1>Courses and Leadership directory</h1>
+
+      <p class="sub"> 50 Arts courses. Each card shows the leadership chain from Dean to Course Representative.</p>
+            <a class="back" href="index.html">← Back to Home</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Leadership overview -->
+    <section class="leadership">
+      <div class="panel">
+        <div class="row">
+          <img class="avatar ring" id="dean-avatar" src="" alt="Dean photo" />
+          <div>
+            <div class="dept">Faculty leadership</div>
+            <h2 style="margin:4px 0 6px;font-size:20px">Dean and heads of departments</h2>
+            <p class="sub">These leaders appear across all courses below.</p>
+          </div>
+        </div>
+        <div class="row" id="leadership-roles" style="margin-top:12px;flex-wrap:wrap"></div>
+        <p class="crumb">Order shown on cards: Dean → HOD → Lecturer-in-Charge → Course Representative</p>
+      </div>
+
+      <div class="panel">
+        <div class="dept">Filter by department</div>
+        <div id="filters" class="filters"></div>
+      </div>
+    </section>
+
+    <!-- Courses grid -->
+    <section>
+      <div id="grid" class="grid"></div>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <div>© 2025 The Survival University. All rights reserved.</div>
+  </footer>
+    <!--scrolldown function-->
+    <button id="scrollToggle">↓</button>
+  <script>
+    // Helper: avatar source using pravatar (from your Arts page)
+    const avatar = (n) => `https://i.pravatar.cc/100?img=${(n%70)+1}`;
+
+    // Your Arts data
+    const deans = [
+      { name: "Prof. Ayo Ayodele", img: avatar(1) },
+      { name: "Prof. Chidinma Okonkwo", img: avatar(2) },
+      { name: "Prof. Musa Ibrahim", img: avatar(3) },
+      { name: "Prof. Amaka Nwosu", img: avatar(4) },
+      { name: "Prof. Femi Adeyemi", img: avatar(5) },
+      { name: "Prof. Ifeoma Eze", img: avatar(6) },
+    ];
+
+    const hods = [
+      { name: "Dr. Tola Alade", img: avatar(10) },
+      { name: "Dr. Zainab Aliyu", img: avatar(11) },
+      { name: "Dr. Kenechukwu Obi", img: avatar(12) },
+      { name: "Dr. Funmi Adeleke", img: avatar(13) },
+      { name: "Dr. Hassan Abdullahi", img: avatar(14) },
+      { name: "Dr. Ijeoma Okoro", img: avatar(15) },
+      { name: "Dr. Gbolahan Adebisi", img: avatar(16) },
+      { name: "Dr. Hauwa Salisu", img: avatar(17) },
+      { name: "Dr. Victor Nnanna", img: avatar(18) },
+      { name: "Dr. Maryam Garba", img: avatar(19) },
+    ];
+
+    const lecturers = [
+      { name: "Ms. Adaeze Nwaka", img: avatar(20) },
+      { name: "Mr. Tunde Akinyemi", img: avatar(21) },
+      { name: "Ms. Fatima Sulaiman", img: avatar(22) },
+      { name: "Mr. Emeka Ofor", img: avatar(23) },
+      { name: "Ms. Rukayat Lawal", img: avatar(24) },
+      { name: "Mr. Chukwudi Ezenwa", img: avatar(25) },
+      { name: "Ms. Halima Yusuf", img: avatar(26) },
+      { name: "Mr. Kunle Oladipo", img: avatar(27) },
+      { name: "Ms. Nkem Nwankwo", img: avatar(28) },
+      { name: "Mr. Ibrahim Danjuma", img: avatar(29) },
+      { name: "Ms. Amaka Umeh", img: avatar(30) },
+      { name: "Mr. Fatai Bakare", img: avatar(31) },
+      { name: "Ms. Blessing Okafor", img: avatar(32) },
+      { name: "Mr. Sani Bello", img: avatar(33) },
+      { name: "Ms. Ogochukwu Eze", img: avatar(34) },
+      { name: "Mr. Bamidele Ogun", img: avatar(35) },
+      { name: "Ms. Ifunanya Ijeoma", img: avatar(36) },
+      { name: "Mr. Ayo Falola", img: avatar(37) },
+      { name: "Ms. Zainab Ahmed", img: avatar(38) },
+      { name: "Mr. Kelechi Duru", img: avatar(39) },
+    ];
+
+    const reps = [
+      "Buchi Okeke","Adaobi Nnaji","Tunde Balogun","Fatima Bello","Chisom Eze","Hassan Umar","Ngozi Okafor","Ibrahim Sani","Aisha Lawal","Emeka Umeh",
+      "Yemi Adeola","Zainab Yusuf","Kelechi Nwankwo","Funke Adebayo","Sulaiman Ali","Amarachi Kalu","Bolaji Salami","Halima Abdullahi","Somtochukwu Obi","Gbenga Falade",
+      "Favour Ojo","Hauwa Mohammed","Ifunanya Njor","Samuel Etuk","Efe Ighodaro","Chika Okoye","Ireti Akinola","Ugochukwu Duru","Morenike Adekoya","Ikechukwu Okorie",
+      "Oluwadamilola Ajayi","Maryam Lawal","Ridwan Adekunle","Chidinma Eze","Abdulrasheed Musa","Ozioma Nwosu","Ifeanyi Okoro","Deborah Aina","Ishaq Sule","Kamila Shittu",
+      "Olabisi Owoeye","Opeyemi Quadri","Shedrack Umeh","Ojonugwa Abu","Omawumi Ogiri","Rita Nkem","Tarila Kumowei","Oghenevwogaga Ejiro","Olanrewaju Shittu","Ezinne Obi"
+    ].map((name, idx) => ({ name, img: avatar(40+idx) }));
+
+    const rawCourses = [
+      { title:"Fine and Applied Arts", q:"fine art", dept:"Department of Fine & Applied Arts" },
+      { title:"Graphic Design", q:"graphic design", dept:"Department of Visual Communication Design" },
+      { title:"Painting", q:"painting", dept:"Department of Fine & Applied Arts" },
+      { title:"Sculpture", q:"sculpture", dept:"Department of Fine & Applied Arts" },
+      { title:"Ceramics", q:"ceramics art", dept:"Department of Fine & Applied Arts" },
+      { title:"Textile Design", q:"textile design", dept:"Department of Fine & Applied Arts" },
+      { title:"Fashion Design", q:"fashion design", dept:"Department of Creative Arts" },
+      { title:"Photography", q:"photography", dept:"Department of Creative Arts" },
+      { title:"Film and Cinematography", q:"film cinematography", dept:"Department of Theatre & Film Arts" },
+      { title:"Theatre Arts", q:"theatre stage", dept:"Department of Theatre & Film Arts" },
+      { title:"Dance", q:"dance performance", dept:"Department of Theatre & Film Arts" },
+      { title:"Music", q:"music performance", dept:"Department of Music" },
+      { title:"Art History", q:"art museum", dept:"Department of Art History & Curatorial Studies" },
+      { title:"Curatorial Studies", q:"curator museum", dept:"Department of Art History & Curatorial Studies" },
+      { title:"Visual Communication Design", q:"visual communication", dept:"Department of Visual Communication Design" },
+      { title:"Animation", q:"animation", dept:"Department of Digital Media Arts" },
+      { title:"Game Art", q:"game art", dept:"Department of Digital Media Arts" },
+      { title:"UX/UI Design", q:"ui ux design", dept:"Department of Visual Communication Design" },
+      { title:"Illustration", q:"illustration", dept:"Department of Visual Communication Design" },
+      { title:"Digital Media Arts", q:"digital media art", dept:"Department of Digital Media Arts" },
+      { title:"Printmaking", q:"printmaking", dept:"Department of Fine & Applied Arts" },
+      { title:"Industrial Design", q:"industrial design", dept:"Department of Industrial & Product Design" },
+      { title:"Interior Design", q:"interior design", dept:"Department of Industrial & Product Design" },
+      { title:"Architecture History and Theory", q:"architecture drawings", dept:"Department of Architecture & Built Heritage" },
+      { title:"Cultural Studies", q:"cultural studies", dept:"Department of Cultural & Media Studies" },
+      { title:"Media and Communication", q:"media communication", dept:"Department of Mass Communication" },
+      { title:"Creative Writing", q:"creative writing", dept:"Department of English & Literary Studies" },
+      { title:"English and Literary Studies", q:"books literature", dept:"Department of English & Literary Studies" },
+      { title:"Linguistics", q:"linguistics", dept:"Department of Linguistics & Nigerian Languages" },
+      { title:"Philosophy", q:"philosophy library", dept:"Department of Philosophy" },
+      { title:"History and International Studies", q:"history archives", dept:"Department of History & International Studies" },
+      { title:"Archaeology", q:"archaeology", dept:"Department of Archaeology & Heritage Studies" },
+      { title:"Language and Communication Arts", q:"communication arts", dept:"Department of Communication Arts" },
+      { title:"Journalism", q:"journalism newsroom", dept:"Department of Mass Communication" },
+      { title:"Advertising and Public Relations", q:"advertising", dept:"Department of Mass Communication" },
+      { title:"Broadcast Production", q:"broadcast studio", dept:"Department of Theatre & Film Arts" },
+      { title:"Sound Design", q:"sound design", dept:"Department of Music & Sound Design" },
+      { title:"Set and Costume Design", q:"stage design", dept:"Department of Theatre & Film Arts" },
+      { title:"Film Editing", q:"film editing", dept:"Department of Theatre & Film Arts" },
+      { title:"3D Modelling", q:"3d modelling", dept:"Department of Digital Media Arts" },
+      { title:"Concept Art", q:"concept art", dept:"Department of Digital Media Arts" },
+      { title:"Art Education", q:"art classroom", dept:"Department of Art Education" },
+      { title:"Museum Studies", q:"museum", dept:"Department of Art History & Curatorial Studies" },
+      { title:"Heritage and Conservation", q:"heritage conservation", dept:"Department of Archaeology & Heritage Studies" },
+      { title:"Contemporary African Art", q:"african art", dept:"Department of Fine & Applied Arts" },
+      { title:"Visual Effects (VFX)", q:"vfx", dept:"Department of Digital Media Arts" },
+      { title:"Motion Graphics", q:"motion graphics", dept:"Department of Digital Media Arts" },
+      { title:"Documentary Filmmaking", q:"documentary film", dept:"Department of Theatre & Film Arts" },
+      { title:"Calligraphy and Lettering", q:"calligraphy", dept:"Department of Visual Communication Design" },
+      { title:"Photography Lighting Techniques", q:"studio lighting", dept:"Department of Creative Arts" },
+    ];
+
+    // Faculty (single dean to mimic science page behavior)
+    const faculty = { dean: deans[0] };
+
+    // Build departments map from rawCourses and assign HODs in order
+    const deptNames = Array.from(new Set(rawCourses.map(c => c.dept)));
+    const departments = {};
+    const nameToKey = {};
+    deptNames.forEach((name, i) => {
+      const key = `D${i}`;
+      departments[key] = { name, hod: hods[i % hods.length] };
+      nameToKey[name] = key;
+    });
+
+    // Build course objects in science-page format
+    const courses = rawCourses.map((c, i) => ({
+      title: c.title,
+      deptKey: nameToKey[c.dept],
+      lecturer: lecturers[i % lecturers.length],
+      rep: reps[i % reps.length]
+    }));
+
+    // UI elements
+    const grid = document.getElementById("grid");
+    const filtersEl = document.getElementById("filters");
+
+    // Role chip renderer (identical structure to science)
+    function roleChip(img, role, name){
+      return `
+        <div class="chip-role" title="${role} — ${name}">
+          <img src="${img}" alt="${role} photo" />
+          <div class="meta">
+            <em>${role}</em>
+            <b>${name}</b>
+          </div>
+        </div>
+      `;
+    }
+
+    // Render leadership panel (dean + all HODs)
+    function renderLeadership(){
+      const deanImg = document.getElementById("dean-avatar");
+      deanImg.src = faculty.dean.img;
+      deanImg.alt = "Dean " + faculty.dean.name;
+
+      const container = document.getElementById("leadership-roles");
+      container.innerHTML = `
+        <div class="role">
+          <img class="avatar" src="${faculty.dean.img}" alt="Dean ${faculty.dean.name}" />
+          <div>
+            <small>Dean</small>
+            <strong>${faculty.dean.name}</strong>
+          </div>
+        </div>
+        ${Object.values(departments).map(d => `
+          <div class="role">
+            <img class="avatar" src="${d.hod.img}" alt="HOD ${d.name}" />
+            <div>
+              <small>HOD, ${d.name}</small>
+              <strong>${d.hod.name}</strong>
+            </div>
+          </div>
+        `).join("")}
+      `;
+    }
+
+    // Build filter chips
+    function renderFilters(){
+      const all = document.createElement("button");
+      all.className = "chip active";
+      all.textContent = "All departments";
+      all.dataset.key = "ALL";
+      filtersEl.appendChild(all);
+
+      Object.entries(departments).forEach(([key, info]) => {
+        const b = document.createElement("button");
+        b.className = "chip";
+        b.textContent = info.name;
+        b.dataset.key = key;
+        filtersEl.appendChild(b);
+      });
+
+      document.querySelectorAll(".chip").forEach(chip => {
+        chip.addEventListener("click", () => {
+          document.querySelectorAll(".chip").forEach(c => c.classList.remove("active"));
+          chip.classList.add("active");
+          renderGrid(chip.dataset.key);
+        });
+      });
+    }
+
+    // Render course grid exactly like science cards
+    function renderGrid(filterKey="ALL"){
+      grid.innerHTML = "";
+      const data = filterKey==="ALL" ? courses : courses.filter(c => c.deptKey===filterKey);
+
+      data.forEach(c => {
+        const dept = departments[c.deptKey];
+        const card = document.createElement("article");
+        card.className = "card";
+        card.innerHTML = `
+          <div class="top">
+            <div class="dept">${dept.name}</div>
+            <div class="title">${c.title}</div>
+          </div>
+          <div class="chain">
+            ${roleChip(faculty.dean.img,"Dean",faculty.dean.name)}
+            <span class="sep"></span>
+            ${roleChip(dept.hod.img,"Head of Department",dept.hod.name)}
+            <span class="sep"></span>
+            ${roleChip(c.lecturer.img,"Lecturer-in-Charge",c.lecturer.name)}
+            <span class="sep"></span>
+            ${roleChip(c.rep.img,"Course Representative",c.rep.name)}
+          </div>
+          <div class="tagline">Leadership chain: Dean → HOD → Lecturer-in-Charge → Course Rep</div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // Init
+    renderLeadership();
+    renderFilters();
+    renderGrid();
+    
+    <!--scrolldown>
+    let scrollDown = true; // start with scroll down
+
+  document.getElementById('scrollToggle').addEventListener('click', function() {
+    if (scrollDown) {
+      window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: 'smooth'
+      });
+      this.textContent = '↑'; // change icon to up
+    } else {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+      this.textContent = '↓'; // change icon to down
+    }
+    scrollDown = !scrollDown; // toggle direction
+  });
+</script>
+  </script>
+</body>
+</html>

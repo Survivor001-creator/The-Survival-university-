@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Portal Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+
+    h1, h2 {
+      text-align: center;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    input, select, button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .section {
+      margin-top: 30px;
+    }
+
+    .profile-pic {
+      width: 120px;
+      height: 120px;
+      border-radius: 8px;
+      object-fit: cover;
+      border: 1px solid #ccc;
+      margin-top: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="loginSection">
+    <h1>Student Portal</h1>
+    <input type="text" id="username" placeholder="Username (use: student)" />
+    <input type="password" id="password" placeholder="Password (use: demo123)" />
+    <button onclick="login()">Login</button>
+  </div>
+
+  <div class="container hidden" id="portalSection">
+    <h2>Welcome, <span id="studentName"></span></h2>
+
+    <div class="section">
+      <h3>Admission Details</h3>
+      <p><strong>Matric Number:</strong> <span id="matric"></span></p>
+      <p><strong>Faculty:</strong> <span id="faculty"></span></p>
+      <p><strong>Department:</strong> <span id="department"></span></p>
+      <p><strong>Section:</strong> <span id="section"></span></p>
+      <p><strong>Session:</strong> <span id="session"></span></p>
+    </div>
+
+    <div class="section">
+      <h3>Fees Summary</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Fee Type</th>
+            <th>Amount (₦)</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="feesTable"></tbody>
+      </table>
+    </div>
+
+    <div class="section">
+      <h3>Profile Photo</h3>
+      <input type="file" accept="image/*" onchange="previewPhoto(event)" />
+      <img id="profilePic" class="profile-pic hidden" />
+    </div>
+
+    <div class="section">
+      <h3>Course Registration</h3>
+      <select id="courseSelect">
+        <option value="">-- Select a course --</option>
+        <option value="COS121">COS121 - Algorithm Design Basics</option>
+        <option value="SEN121">MTH121 - Linear Algebra</option>
+        <option value="GST121">GST121 - Use of English</option>
+        <option value="PHY121">PHY121 - Electricial Energy</option>
+      </select>
+      <button onclick="registerCourse()">Register Course</button>
+      <ul id="courseList"></ul>
+    </div>
+
+    <div class="section">
+      <button onclick="logout()">Logout</button>
+    </div>
+  </div>
+
+  <script>
+    const studentData = {
+      username: "student",
+      password: "demo123",
+      name: "De Survivor",
+      matric: "509408-001",
+      faculty: "Computing",
+      department: "Software Engineering",
+      section: "Morning",
+      session: "2025/2026",
+      fees: [
+        { type: "School Fees", amount: 200000, status: "Paid" },
+        { type: "Acceptance Fee", amount: 50000, status: "Paid" },
+        { type: "ICT Levy", amount: 5000, status: "Unpaid" },
+        { type: "Hostel Fee", amount: 60000, status: "Paid" }
+      ]
+    };
+
+    function login() {
+      const u = document.getElementById("username").value.trim();
+      const p = document.getElementById("password").value.trim();
+      if (u === studentData.username && p === studentData.password) {
+        document.getElementById("loginSection").classList.add("hidden");
+        document.getElementById("portalSection").classList.remove("hidden");
+        loadStudentData();
+      } else {
+        alert("Invalid login. Use student / demo123");
+      }
+    }
+
+    function loadStudentData() {
+      document.getElementById("studentName").textContent = studentData.name;
+      document.getElementById("matric").textContent = studentData.matric;
+      document.getElementById("faculty").textContent = studentData.faculty;
+      document.getElementById("department").textContent = studentData.department;
+      document.getElementById("section").textContent = studentData.section;
+      document.getElementById("session").textContent = studentData.session;
+
+      const feesTable = document.getElementById("feesTable");
+      feesTable.innerHTML = "";
+      studentData.fees.forEach(fee => {
+        const row = `<tr>
+          <td>${fee.type}</td>
+          <td>${fee.amount.toLocaleString()}</td>
+          <td>${fee.status}</td>
+        </tr>`;
+        feesTable.innerHTML += row;
+      });
+    }
+
+    function previewPhoto(event) {
+      const img = document.getElementById("profilePic");
+      img.src = URL.createObjectURL(event.target.files[0]);
+      img.classList.remove("hidden");
+    }
+
+    function registerCourse() {
+      const select = document.getElementById("courseSelect");
+      const course = select.value;
+      if (course) {
+        const list = document.getElementById("courseList");
+        const item = document.createElement("li");
+        item.textContent = course;
+        list.appendChild(item);
+        select.value = "";
+      }
+    }
+
+    function logout() {
+      document.getElementById("portalSection").classList.add("hidden");
+      document.getElementById("loginSection").classList.remove("hidden");
+      document.getElementById("username").value = "";
+      document.getElementById("password").value = "";
+      document.getElementById("courseList").innerHTML = "";
+      document.getElementById("profilePic").classList.add("hidden");
+    }
+  </script>
+</body>
+</html>

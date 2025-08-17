@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About - The Survival University</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root {
+      --color-dark: #222;
+      --color-white: #fff;
+      --color-green: #4CAF50;
+    }
+
+    /* ===== GENERAL BODY ===== */
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: var(--color-white);
+      line-height: 1.6;
+    }
+
+    h1, h3, h4 {
+      text-align: center;
+      font-family: 'Segoe UI', sans-serif;
+      font-weight: bold;
+      margin: 20px 0;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      color: #ffd700;
+    }
+
+    p {
+      margin: 10px 0;
+    }
+
+    /* ===== HIERARCHY TREE ===== */
+    .tree {
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .level {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 25px;
+      margin-bottom: 20px;
+    }
+
+    .person {
+      text-align: center;
+      max-width: 200px;
+    }
+
+    .hexagon {
+      width: 200px;
+      height: 200px;
+      background-color: var(--color-green);
+      overflow: hidden;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .hexagon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .name {
+      font-weight: bold;
+    }
+
+    .rank {
+      font-size: 0.9rem;
+      color: #ddd;
+    }
+
+    hr {
+      border: none;
+      height: 2px;
+      background: rgba(255,255,255,0.2);
+      margin: 20px auto;
+      width: 80%;
+    }
+
+    /* ===== INTRO CONTAINER ===== */
+    .container {
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+      padding: 20px;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    .container h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      background: linear-gradient(to right, #ffdd00, #ff7300, #ff0000);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .emoji {
+      font-size: 2rem;
+      margin: 0 5px;
+    }
+
+    strong {
+      color: #ffd700;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== HORIZONTAL SCROLL SECTIONS ===== */
+    .horizontal-scroll {
+      display: flex;
+      overflow-x: auto;
+      gap: 20px;
+      padding: 15px;
+      scroll-behavior: smooth;
+    }
+
+    .horizontal-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .horizontal-scroll > div,
+    .lecturer,
+    .student {
+      min-width: 150px;
+      text-align: center;
+      background: white;
+      color: #000;
+      border-radius: 10px;
+      padding: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .lecturer img,
+    .student img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .socials.hidden {
+      display: none;
+    }
+
+    .lecturer:hover .socials {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-top: 5px;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background-color: var(--color-dark);
+      color: var(--color-white);
+      padding: 30px 20px;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .footer-box {
+      flex: 1 1 250px;
+    }
+
+    .footer-box ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-box ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-container a {
+      color: #ecf0f1;
+      text-decoration: none;
+    }
+
+    .newsletter input {
+      width: 80%;
+      padding: 8px;
+      margin-top: 10px;
+    }
+
+    .newsletter button {
+      margin-top: 5px;
+      padding: 8px;
+      background-color: var(--color-green);
+      color: var(--color-white);
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    .social-icons a {
+      font-size: 24px;
+      color: var(--color-white);
+      background-color: var(--color-dark);
+      padding: 10px;
+      border-radius: 50%;
+      text-align: center;
+      transition: background 0.3s;
+    }
+
+    .social-icons a:hover {
+      background-color: #3498db;
+    }
+
+    @media (max-width: 768px) {
+      .hexagon {
+        width: 120px;
+        height: 120px;
+      }
+    }
+    
+    /* Button styling */
+  #scrollToggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #0078ff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: background 0.3s;
+  }
+
+  #scrollToggle:hover {
+    background: #005bb5;
+  }
+    
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>University Academic Hierarchy</h1>
+          <a class="back" href="index.html">Back to Home</a>
+  <div class="tree">
+    <!-- Level 1 -->
+    <div class="level">
+      <div class="person">
+        <div class="hexagon"><img src="vc.jpg" alt="Vice Chancellor"></div>
+        <div class="name">Prof.Engr.Survivor D.C</div>
+        <div class="rank">Vice Chancellor</div>
+      </div>
+    </div>
+    <hr>
+
+    <!-- Level 2 -->
+    <div class="level">
+      <div class="person">
+        <div class="hexagon"><img src="dean1.jpg" alt="Dean"></div>
+        <div class="name">Dr. Rose Dan</div>
+        <div class="rank">Dean of Computing</div>
+      </div>
+      <div class="person">
+        <div class="hexagon"><img src="dean2.jpg" alt="Dean"></div>
+        <div class="name">Dr. Godwin williams</div>
+        <div class="rank">Dean of Nursing</div>
+      </div>
+    </div>
+    <hr>
+
+    <!-- Level 3 -->
+    <div class="level">
+      <div class="person">
+        <div class="hexagon"><img src="HOD,SWE.jpg" alt="HOD"></div>
+        <div class="name">Mr. Kelvin Obi</div>
+        <div class="rank">HOD, Software Engineering</div>
+      </div>
+      <div class="person">
+        <div class="hexagon"><img src="hod2.jpg" alt="HOD"></div>
+        <div class="name">Mrs. Helen Ugo</div>
+        <div class="rank">HOD, Law</div>
+      </div>
+    </div>
+    <hr>
+
+    <!-- Level 4 -->
+    <div class="level">
+      <div class="person">
+        <div class="hexagon"><img src="lect1.jpg" alt="Lecturer"></div>
+        <div class="name">Mr. Michael Bone</div>
+        <div class="rank">Lecturer</div>
+      </div>
+      <div class="person">
+        <div class="hexagon"><img src="lect2.jpg" alt="Lecturer"></div>
+        <div class="name">Ms. Janet Lance</div>
+        <div class="rank">Lecturer</div>
+      </div>
+    </div>
+    <hr>
+
+    <!-- Level 5 -->
+    <div class="level">
+      <div class="person">
+        <div class="hexagon"><img src="rep1.jpg" alt="Course Rep"></div>
+        <div class="name">Samuel Bright</div>
+        <div class="rank">Course Rep, SE Yr 2</div>
+      </div>
+      <div class="person">
+        <div class="hexagon"><img src="rep2.jpg" alt="Course Rep"></div>
+        <div class="name">Fatima Bello</div>
+        <div class="rank">Course Rep, Nursing Yr 3</div>
+      </div>
+    </div>
+    <hr>
+
+    <!-- Level 6 -->
+    <div class="level">
+      <div class="person">
+        <div class="hexagon"><img src="student1.jpg" alt="Student"></div>
+        <div class="name">Michael Dan</div>
+        <div class="rank">Student</div>
+      </div>
+      <div class="person">
+        <div class="hexagon"><img src="student2.jpg" alt="Student"></div>
+        <div class="name">Nneka Grace</div>
+        <div class="rank">Student</div>
+      </div>
+      <div class="person">
+        <div class="hexagon"><img src="student3.jpg" alt="Student"></div>
+        <div class="name">John Okoye</div>
+        <div class="rank">Student</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <h1><span class="emoji">🌍</span>The Survival University – Where Knowledge Meets Resilience<span class="emoji">🌱</span></h1>
+  <p>At <strong>The Survival University</strong>, we don’t just teach; we forge leaders who can thrive in any climate, any challenge, and any future.</p>
+  <p>Here, education is not confined to walls – it is an adventure across ideas, cultures, and the limitless landscapes of human potential.</p>
+  <p>This is <strong>The Survival University</strong> – where every graduate emerges not just educated, but unstoppable.</p>
+</div>
+
+<main>
+  <section class="about">
+    <h3>We provide the best learning experience.</h3>
+    <p>At Survival International University, we combine innovative teaching, global exposure, and experienced faculty...</p>
+
+    <div class="stats horizontal-scroll">
+      <div><img src="courses.jpg" width="150" height="150"alt="Courses"><p>99+ Courses</p></div>
+      <div><img src="awards.jpg"width="150" height="150" alt="Awards"><p>25+ Awards</p></div>
+      <div><img src="students.jpg" width="150" height="150" alt="Students"><p>1M+ Students</p></div>
+    </div>
+
+    <h3>Expert Lecturers</h3>
+    <div class="lecturers horizontal-scroll">
+      <div class="lecturer">
+        <img src="lecturers.jpg" alt="Lecturer">
+        <p>lecturers</p>
+        <p>Our Distinguished Lecturers
+At the heart of our academic excellence is a team of dedicated lecturers who bring a wealth of knowledge, real-world experience, and passion for teaching. Each lecturer is not only an expert in their field but also a mentor, committed to guiding students beyond textbooks into practical understanding and lifelong learning. Together, they form a diverse and dynamic faculty, united by a shared goal — to inspire, challenge, and prepare students for success in an ever-changing world.
+</p>
+      </div>
+    </div>
+    
+    
+
+    <h3>Our Satisfied Students</h3>
+    <div class="students horizontal-scroll">
+      <div class="student">
+        <img src="students4.jpg" alt="Student">
+        <p> The few Graduates of 2025</p>
+        <p>⭐⭐⭐⭐⭐</p>
+      </div>
+    </div>
+    <hr>
+    
+     <p>© 2025 The Survival University. All rights reserved.</p>
+     
+    
+  </section>
+  
+<button id="scrollToggle">↓</button>
+<script>
+ 
+  document.querySelectorAll(".lecturer").forEach(lect => {
+    lect.addEventListener("click", () => {
+      const socials = lect.querySelector(".socials");
+      if (socials) {
+        socials.classList.toggle("hidden");
+      }
+    });
+  });
+  
+  <!--scrollDown-->
+   let scrollDown = true; // start with scroll down
+
+  document.getElementById('scrollToggle').addEventListener('click', function() {
+    if (scrollDown) {
+      window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: 'smooth'
+      });
+      this.textContent = '↑'; // change icon to up
+    } else {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+      this.textContent = '↓'; // change icon to down
+    }
+    scrollDown = !scrollDown; // toggle direction
+  });
+  
+</script>
+
+
+</body>
+</html>

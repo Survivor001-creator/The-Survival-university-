@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Faculty of Science — Courses & Leadership</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --bg:#0b1020;
+      --card:#121833;
+      --muted:#a6b0d1;
+      --text:#e8ecff;
+      --accent:#5ce1e6;
+      --accent-2:#9b8cff;
+      --ring:rgba(92,225,230,0.35);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:linear-gradient(180deg,#070b18 0%, #0b1020 100%);color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif}
+    a{color:var(--accent);text-decoration:none}
+    header{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:saturate(140%) blur(10px);
+      background:rgba(7,11,24,0.7);
+      border-bottom:1px solid rgba(156,163,175,0.15);
+    }
+    .container{max-width:1200px;margin:0 auto;padding:20px}
+    .topbar{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .badge{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#081223;padding:6px 10px;border-radius:999px;font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+    h1{margin:8px 0 0;font-size:28px;line-height:1.2}
+    .sub{color:var(--muted);margin-top:6px;font-size:14px}
+    .leadership{
+      margin:18px 0 10px;display:grid;gap:16px;grid-template-columns:1fr;align-items:start
+    }
+    @media(min-width:900px){.leadership{grid-template-columns:280px 1fr}}
+    .panel{
+      background:linear-gradient(180deg,rgba(18,24,51,0.85),rgba(12,18,40,0.85));
+      border:1px solid rgba(156,163,175,0.14);
+      border-radius:14px;padding:14px 14px;
+      box-shadow:0 8px 30px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.02)
+    }
+    .row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    .avatar{width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,0.08)}
+    .role{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.03);padding:8px 10px;border-radius:12px;border:1px solid rgba(255,255,255,0.06)}
+    .role small{display:block;color:var(--muted);font-size:11px;line-height:1}
+    .role strong{display:block;font-size:13px}
+    .crumb{color:var(--muted);font-size:12px;margin:8px 0 0}
+    .filters{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+    .chip{padding:7px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.08);cursor:pointer;color:var(--muted);background:rgba(255,255,255,0.02);transition:all .2s}
+    .chip.active{color:#081223;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-color:transparent;font-weight:700}
+    .grid{display:grid;gap:14px;margin:14px 0 60px;grid-template-columns:1fr}
+    @media(min-width:640px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media(min-width:1024px){.grid{grid-template-columns:repeat(3,1fr)}}
+    .card{
+      background:linear-gradient(180deg,rgba(18,24,51,0.9),rgba(12,18,40,0.9));
+      border:1px solid rgba(156,163,175,0.14);
+      border-radius:16px;overflow:hidden;position:relative
+    }
+    .card .top{padding:14px 14px 6px;border-bottom:1px dashed rgba(156,163,175,0.18)}
+    .dept{font-size:12px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+    .title{font-size:16px;font-weight:700;margin-top:4px}
+    .chain{display:flex;gap:10px;padding:12px;align-items:center;flex-wrap:wrap}
+    .chip-role{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.03);padding:8px 10px;border-radius:12px;border:1px solid rgba(255,255,255,0.06)}
+    .chip-role img{width:32px;height:32px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,0.06)}
+    .chip-role .meta{display:flex;flex-direction:column}
+    .chip-role .meta em{font-style:normal;color:var(--muted);font-size:10px;line-height:1}
+    .chip-role .meta b{font-weight:700;font-size:12px}
+    .sep{width:14px;height:2px;background:rgba(255,255,255,0.15);border-radius:2px}
+    .tagline{padding:0 14px 14px;color:var(--muted);font-size:12px}
+    .footer{
+      border-top:1px solid rgba(156,163,175,0.12);padding:14px 0;color:var(--muted);font-size:13px
+    }
+    .ring{box-shadow:0 0 0 6px var(--ring)}
+    .back{margin-left:auto;font-size:13px}
+    
+#scrollToggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #333;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  transition: background 0.3s, transform 0.3s;
+}
+
+#scrollToggle:hover {
+  background: #555;
+  transform: scale(1.1);
+}
+    
+    
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container topbar">
+      <span class="badge">Faculty of Science</span>
+      <h1>Courses and Leadership directory</h1>
+ <p>Browse 70 science courses. Each card shows the leadership chain from Dean to Course Representative.</p>
+       <a class="back" href="index.html">← Back to Home</a>
+      <p class="sub">
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Leadership overview -->
+    <section class="leadership">
+      <div class="panel">
+        <div class="row">
+          <img class="avatar ring" src="dean2.jpg" alt="Dean photo" />
+          <div>
+            <div class="dept">Faculty leadership</div>
+            <h2 style="margin:4px 0 6px;font-size:20px">Dean and heads of departments</h2>
+            <p class="sub">These leaders appear across all courses below.</p>
+          </div>
+        </div>
+        <div class="row" style="margin-top:12px;flex-wrap:wrap">
+          <div class="role">
+            <img class="avatar" src="dean1.jpg" alt="Dean photo" />
+            <div>
+              <small>Dean</small>
+              <strong>Prof. Olumide Banjo</strong>
+            </div>
+          </div>
+          <div class="role">
+            <img class="avatar" src="hod1.jpg" alt="HOD Biological Sciences" />
+            <div>
+              <small>HOD, Biological Sciences</small>
+              <strong>Dr. Adaeze Okafor</strong>
+            </div>
+          </div>
+          <div class="role">
+            <img class="avatar" src="hod2.jpg" alt="HOD Chemistry" />
+            <div>
+              <small>HOD, Chemistry</small>
+              <strong>Prof. Tunde Adebayo</strong>
+            </div>
+          </div>
+          <div class="role">
+            <img class="avatar" src="hod3.jpg" alt="HOD Physics" />
+            <div>
+              <small>HOD, Physics</small>
+              <strong>Dr. Ibrahim Musa</strong>
+            </div>
+          </div>
+          <div class="role">
+            <img class="avatar" src="hod5.jpg" alt="HOD Earth & Env. Sci." />
+            <div>
+              <small>HOD, Earth & Environmental Sciences</small>
+              <strong>Dr. Ngozi Eze</strong>
+            </div>
+          </div>
+          <div class="role">
+            <img class="avatar" src="hod4.jpg" alt="HOD Mathematics & Statistics" />
+            <div>
+              <small>HOD, Mathematics & Statistics</small>
+              <strong>Prof. Chinedu Nwosu</strong>
+            </div>
+          </div>
+          <div class="role">
+            <img class="avatar" src="hod,swe.jpg" alt="HOD Computer & Data Science" />
+            <div>
+              <small>HOD, Computer & Data Science</small>
+              <strong>Dr. Aisha Bello</strong>
+            </div>
+          </div>
+          <div class="role">
+            <img class="avatar" src="hod3.jpg" alt="HOD Health & Applied Sciences" />
+            <div>
+              <small>HOD, Health & Applied Sciences</small>
+              <strong>Prof. Ifeoma Umeh</strong>
+            </div>
+          </div>
+        </div>
+        <p class="crumb">Order shown on cards: Dean → HOD → Lecturer-in-Charge → Course Representative</p>
+      </div>
+
+      <div class="panel">
+        <div class="dept">Filter by department</div>
+        <div id="filters" class="filters"></div>
+      </div>
+    </section>
+
+    <!-- Courses grid -->
+    <section>
+      <div id="grid" class="grid"></div>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <div>© 2025 The Survival University. All rights reserved</div>
+  </footer>
+
+<button id="scrollToggle">⬇️</button>
+
+  <script>
+    // Facutly & Departments (placeholders; replace with real names/photos)
+    const faculty = {
+      dean: { name: "Prof. Olumide Banjo", img: "dean2.jpg" }
+    };
+
+    const departments = {
+      BIO: { name: "Biological Sciences", hod: { name:"Dr. Adaeze Okafor", img:"hod4.jpg" } },
+      CHE: { name: "Chemistry", hod: { name:"Prof. Tunde Adebayo", img:"hod5.jpg" } },
+      PHY: { name: "Physics", hod: { name:"Dr. Ibrahim Musa", img:"hod1" } },
+      EES: { name: "Earth & Environmental Sciences", hod: { name:"Dr. Ngozi Eze", img:"hod2.jpg" } },
+      MAS: { name: "Mathematics & Statistics", hod: { name:"Prof. Chinedu Nwosu", img:"hod5.jpg" } },
+      CDS: { name: "Computer & Data Science", hod: { name:"Dr. Aisha Bello", img:"hod3.jpg" } },
+      HAS: { name: "Health & Applied Sciences", hod: { name:"Prof. Ifeoma Umeh", img:"hod,swe.jpg" } }
+    };
+
+    // Generate 70 courses with unique lecturers and reps (placeholders)
+    const listByDept = {
+      BIO: [
+        "Cell Biology","Genetics","Microbiology","Biochemistry","Molecular Biology","Botany","Zoology","Ecology",
+        "Evolutionary Biology","Marine Biology","Immunology","Virology","Parasitology","Mycology","Plant Pathology",
+        "Physiology","Anatomy","Neuroscience","Developmental Biology","Biotechnology","Bioinformatics"
+      ],
+      CHE: [
+        "Organic Chemistry","Inorganic Chemistry","Physical Chemistry","Analytical Chemistry",
+        "Environmental Chemistry","Materials Chemistry","Polymer Chemistry","Medicinal Chemistry"
+      ],
+      PHY: [
+        "Classical Mechanics","Electromagnetism","Thermodynamics","Quantum Mechanics",
+        "Optics","Nuclear Physics","Solid State Physics","Astrophysics","Particle Physics"
+      ],
+      EES: [
+        "Geology","Geophysics","Meteorology","Atmospheric Science","Hydrology","Oceanography",
+        "Climate Science","Environmental Science","Remote Sensing and GIS","Soil Science"
+      ],
+      MAS: [
+        "Calculus and Differential Equations","Linear Algebra","Probability and Statistics","Real Analysis",
+        "Abstract Algebra","Numerical Methods","Operations Research","Mathematical Modeling"
+      ],
+      CDS: [
+        "Introduction to Computer Science","Data Structures and Algorithms","Artificial Intelligence",
+        "Machine Learning","Data Science","Cybersecurity","Computational Biology","Computational Physics"
+      ],
+      HAS: [
+        "Pharmacology","Medical Laboratory Science","Environmental Health","Toxicology",
+        "Food Science and Technology","Nutrition and Dietetics","Forensic Science"
+      ]
+    };
+
+    // Create a flat array of course objects with lecturer/rep placeholders
+    const courses = [];
+    let idx = 1;
+    for (const key of Object.keys(listByDept)) {
+      for (const title of listByDept[key]) {
+        const num = String(idx).padStart(2,"0");
+        courses.push({
+          title,
+          deptKey: key,
+          lecturer: { name: `Dr. Lecturer ${num}`, img: `lect1.jpg` },
+          rep: { name: `Course Rep ${num}`, img: `student1.jpg` }
+        });
+        idx++;
+      }
+    }
+
+    // Build filter chips
+    const filtersEl = document.getElementById("filters");
+    const filterAll = document.createElement("button");
+    filterAll.className = "chip active";
+    filterAll.textContent = "All departments";
+    filterAll.dataset.key = "ALL";
+    filtersEl.appendChild(filterAll);
+
+    Object.entries(departments).forEach(([key, info]) => {
+      const b = document.createElement("button");
+      b.className = "chip";
+      b.textContent = info.name;
+      b.dataset.key = key;
+      filtersEl.appendChild(b);
+    });
+
+    // Render grid
+    const grid = document.getElementById("grid");
+
+    function roleChip(img, role, name){
+      return `
+        <div class="chip-role" title="${role} — ${name}">
+          <img src="${img}" alt="${role} photo" />
+          <div class="meta">
+            <em>${role}</em>
+            <b>${name}</b>
+          </div>
+        </div>
+      `;
+    }
+
+    function render(filterKey="ALL"){
+      grid.innerHTML = "";
+      const data = filterKey==="ALL" ? courses : courses.filter(c => c.deptKey===filterKey);
+
+      data.forEach(c => {
+        const dept = departments[c.deptKey];
+        const card = document.createElement("article");
+        card.className = "card";
+
+        card.innerHTML = `
+          <div class="top">
+            <div class="dept">${dept.name}</div>
+            <div class="title">${c.title}</div>
+          </div>
+          <div class="chain">
+            ${roleChip(faculty.dean.img,"Dean",faculty.dean.name)}
+            <span class="sep"></span>
+            ${roleChip(dept.hod.img,"Head of Department",dept.hod.name)}
+            <span class="sep"></span>
+            ${roleChip(c.lecturer.img,"Lecturer-in-Charge",c.lecturer.name)}
+            <span class="sep"></span>
+            ${roleChip(c.rep.img,"Course Representative",c.rep.name)}
+          </div>
+          <div class="tagline">Leadership chain: Dean → HOD → Lecturer-in-Charge → Course Rep</div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    render();
+
+    // Filter handlers
+    document.querySelectorAll(".chip").forEach(chip => {
+      chip.addEventListener("click", () => {
+        document.querySelectorAll(".chip").forEach(c => c.classList.remove("active"));
+        chip.classList.add("active");
+        render(chip.dataset.key);
+      });
+    });
+    
+    const btn = document.getElementById("scrollToggle");
+
+// update icon depending on scroll position
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 100) {
+    btn.textContent = "⬆️"; // show UP when scrolled down
+  } else {
+    btn.textContent = "⬇️"; // show DOWN when at top
+  }
+});
+
+// toggle scroll
+btn.addEventListener("click", () => {
+  if (window.scrollY > 100) {
+    // scroll to top
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  } else {
+    // scroll to bottom
+    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+  }
+});
+
+  </script>
+</body>
+</html>

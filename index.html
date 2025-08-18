@@ -870,13 +870,17 @@ closeMenuBtn.addEventListener('click', () => {
   navLinks.classList.remove('show');
 });
 
-// Close menu when clicking a link (mobile only)
+// Close menu when clicking a link (mobile only), but not FACULTY toggle
 document.querySelectorAll('#nav-links a, #nav-links button').forEach(item => {
-  item.addEventListener('click', () => {
+  item.addEventListener('click', (e) => {
+    if (item.classList.contains("dropdown-btn")) {
+      // If it's the FACULTY toggle, do nothing
+      return;
+    }
     if (window.innerWidth <= 768) navLinks.classList.remove('show');
   });
 });
-
+    
 // Modal
 const enrollBtn = document.getElementById('enrollBtn');
 const enrollModal = document.getElementById('enrollModal');

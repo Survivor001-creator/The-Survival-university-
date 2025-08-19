@@ -499,36 +499,36 @@ footer {
 
   <!-- HEADER -->
   <header>
-    <div class="logo">
-      <img src="logo2.jpg" alt="University Logo">
-<span>THE SURVIVAL UNIVERSITY</span>
-    </div>
-    <nav>
-      <div id="hamburger">☰</div>
-      <ul id="nav-links">
-        <li id="closeMenu" style="text-align:right;">
-          <button style="font-size:24px; background:none; border:none; color:white;">✕</button>
-        </li>
-        <!-- pages folder -->
-        <li><a href="#">Home</a></li>
-        <li><a href="student portal.html">portal</a></li>
-        <li> <a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        
-        
-<!-- FACULTY Dropdown -->
-<li class="dropdown">
-<button type="button" class="dropdown-btn" onclick="toggleDropdown()">FACULTY ▾</button>
-  <ul class="dropdown-content" id="facultyDropdown">
-    <li><a href="arts.html">Arts</a></li>
-    <li><a href="science.html">Science</a></li>
-  </ul>
-</li>
+  <div class="logo">
+    <img src="logo2.jpg" alt="University Logo">
+    <span>THE SURVIVAL UNIVERSITY</span>
+  </div>
 
-    
- </ul>
-                 
-    </nav>
+  <nav>
+    <!-- Hamburger (mobile only) -->
+    <div id="hamburger">☰</div>
+
+    <!-- Navigation links -->
+    <ul id="nav-links">
+      <!-- Close button (mobile only, not a list item) -->
+      <button id="closeMenu">✕</button>
+
+      <!-- Pages -->
+      <li><a href="#">Home</a></li>
+      <li><a href="student portal.html">Portal</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+
+      <!-- FACULTY Dropdown -->
+      <li class="dropdown">
+        <button type="button" class="dropdown-btn" onclick="toggleDropdown()">FACULTY ▾</button>
+        <ul class="dropdown-content" id="facultyDropdown">
+          <li><a href="arts.html">Arts</a></li>
+          <li><a href="science.html">Science</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
   </header>
 
   <!-- HERO -->

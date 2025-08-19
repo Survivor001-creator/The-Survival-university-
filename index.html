@@ -69,14 +69,12 @@ nav {
   position: relative;
 }
 
-/* Default: hide hamburger (desktop first) */
-.hamburger {
-  font-size: 24px;
-  cursor: pointer;
+/* Default: Desktop – show nav links, hide hamburger + close */
+.hamburger,
+#closeMenu {
   display: none;
 }
 
-/* Desktop: show nav links normally */
 #nav-links {
   list-style: none;
   display: flex;
@@ -93,10 +91,12 @@ nav {
   cursor: pointer;
 }
 
-/* Mobile: show hamburger, hide nav until toggled */
+/* Mobile styles */
 @media (max-width: 768px) {
   .hamburger {
-    display: block;
+    display: block;  /* show hamburger on mobile */
+    font-size: 24px;
+    cursor: pointer;
   }
 
   #nav-links {
@@ -115,13 +115,18 @@ nav {
   #nav-links.show {
     right: 0;
   }
-  }
 
-#closeMenu {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  display: none;
+  #closeMenu {
+    display: block;   /* only on mobile */
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--color-white);
+    background: none;
+    border: none;
+  }
 }
 
     
